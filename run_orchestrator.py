@@ -1,9 +1,11 @@
 from pathlib import Path
 
-from src.engineering_team_orchestrator import run_engineering_team_orchestrator
+from src.engineering_team_orchestrator import run_engineering_team_orchestrator, write_release_report
 
 
 if __name__ == "__main__":
     repo_root = Path(__file__).resolve().parent
     trace = run_engineering_team_orchestrator(repo_root)
     print(trace[["request_id", "decision", "max_risk_score", "decision_match"]].to_string(index=False))
+    report_path = write_release_report(trace, repo_root / "outputs" / "engineering_team_report.md")
+    print(f"Release report written to {report_path}")
