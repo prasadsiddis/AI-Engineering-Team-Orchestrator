@@ -1,0 +1,18 @@
+{
+  "project": "ai-engineering-team-orchestrator",
+  "roles": [
+    "product_agent",
+    "engineering_agent",
+    "design_agent",
+    "qa_agent",
+    "release_agent"
+  ],
+  "decision_policy": {
+    "block_on_high_safety_risk": true,
+    "revise_on_low_testability": true,
+    "ready_requires_product_and_qa": true
+  },
+  "outputs": {
+    "trace_path": "outputs/engineering_team_trace.csv"
+  }
+}

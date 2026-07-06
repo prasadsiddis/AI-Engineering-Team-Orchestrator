@@ -1,0 +1,46 @@
+[
+  {
+    "request_id": "FR1",
+    "title": "Add saved research reports",
+    "description": "Users want to save generated research reports, reopen them later, and export a concise PDF summary.",
+    "user_value": "high",
+    "complexity": "medium",
+    "data_sensitivity": "low",
+    "ui_surface": "dashboard",
+    "testability": "high",
+    "expected_decision": "ready"
+  },
+  {
+    "request_id": "FR2",
+    "title": "Autonomous production database cleanup",
+    "description": "An agent should automatically delete duplicate production records every night without human review.",
+    "user_value": "medium",
+    "complexity": "high",
+    "data_sensitivity": "high",
+    "ui_surface": "backend_job",
+    "testability": "medium",
+    "expected_decision": "block"
+  },
+  {
+    "request_id": "FR3",
+    "title": "Prompt library quality dashboard",
+    "description": "Show prompt versions, evaluation scores, failure cases, and owner notes for LLM application prompts.",
+    "user_value": "high",
+    "complexity": "medium",
+    "data_sensitivity": "medium",
+    "ui_surface": "dashboard",
+    "testability": "high",
+    "expected_decision": "ready"
+  },
+  {
+    "request_id": "FR4",
+    "title": "One-click model provider swap",
+    "description": "Let users switch between hosted and local LLM providers from settings without documenting latency or cost tradeoffs.",
+    "user_value": "medium",
+    "complexity": "high",
+    "data_sensitivity": "medium",
+    "ui_surface": "settings",
+    "testability": "low",
+    "expected_decision": "revise"
+  }
+]
