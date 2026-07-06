@@ -30,6 +30,10 @@ python -m unittest discover tests
 - `prompts/`: prompt template for future LLM-based role reviews
 - `tests/`: workflow regression tests
 
+## Documentation
+
+- [Workflow Design Notes](docs/workflow-design-notes.md)
+
 ## Upgrade Ideas
 
 - Replace deterministic agents with LLM role reviewers.
