@@ -30,6 +30,11 @@ python -m unittest discover tests
 - `prompts/`: prompt template for future LLM-based role reviews
 - `tests/`: workflow regression tests
 
+## Documentation
+
+- [Engineering Team Trace Schema](docs/trace-schema.md)
+- [Contributing Guide](CONTRIBUTING.md)
+
 ## Upgrade Ideas
 
 - Replace deterministic agents with LLM role reviewers.
