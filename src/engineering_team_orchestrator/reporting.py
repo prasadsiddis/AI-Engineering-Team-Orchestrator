@@ -7,6 +7,11 @@ from pathlib import Path
 import pandas as pd
 
 
+def escape_markdown_table_cell(value: object) -> str:
+    """Escape characters that would break a markdown table cell."""
+    return str(value).replace("\\", "\\\\").replace("|", "\\|").replace("\n", " ")
+
+
 def build_release_report(trace: pd.DataFrame) -> str:
     ready_count = int((trace["decision"] == "ready").sum())
     revise_count = int((trace["decision"] == "revise").sum())
@@ -26,9 +31,12 @@ def build_release_report(trace: pd.DataFrame) -> str:
         "|---|---|---:|---|",
     ]
     for row in trace.to_dict(orient="records"):
+        request_label = escape_markdown_table_cell(f"{row['request_id']} - {row['title']}")
+        decision = escape_markdown_table_cell(row["decision"])
+        decision_match = escape_markdown_table_cell(row["decision_match"])
         lines.append(
-            f"| {row['request_id']} - {row['title']} | {row['decision']} | "
-            f"{row['max_risk_score']} | {row['decision_match']} |"
+            f"| {request_label} | {decision} | "
+            f"{row['max_risk_score']} | {decision_match} |"
         )
     lines.extend(
         [

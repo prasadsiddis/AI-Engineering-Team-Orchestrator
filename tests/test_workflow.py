@@ -27,6 +27,13 @@ class EngineeringTeamWorkflowTests(unittest.TestCase):
         self.assertIn("Needs revision: 1", report)
         self.assertIn("Blocked: 1", report)
 
+    def test_release_report_escapes_markdown_table_cells(self):
+        trace = run_engineering_team_orchestrator(REPO_ROOT)
+        trace.loc[0, "title"] = "Review data | export"
+
+        report = build_release_report(trace)
+
+        self.assertIn("FR1 - Review data \\| export", report)
 
 if __name__ == "__main__":
     unittest.main()
