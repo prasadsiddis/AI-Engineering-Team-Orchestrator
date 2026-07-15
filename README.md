@@ -19,6 +19,7 @@ This project is inspired by the role-based AI workflow idea in [garrytan/gstack]
 ```bash
 pip install -r requirements.txt
 python run_orchestrator.py
+python run_orchestrator.py --report-path outputs/custom_report.md
 python -m unittest discover tests
 ```
 

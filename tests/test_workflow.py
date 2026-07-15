@@ -6,7 +6,11 @@ import unittest
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
-from src.engineering_team_orchestrator import build_release_report, run_engineering_team_orchestrator
+from src.engineering_team_orchestrator import (
+    build_release_report,
+    run_engineering_team_orchestrator,
+    write_release_report,
+)
 
 
 class EngineeringTeamWorkflowTests(unittest.TestCase):
@@ -34,6 +38,17 @@ class EngineeringTeamWorkflowTests(unittest.TestCase):
         report = build_release_report(trace)
 
         self.assertIn("FR1 - Review data \\| export", report)
+
+    def test_write_release_report_creates_parent_directory(self):
+        trace = run_engineering_team_orchestrator(REPO_ROOT)
+        output_path = REPO_ROOT / "outputs" / "test_reports" / "release_report.md"
+
+        written_path = write_release_report(trace, output_path)
+
+        self.assertEqual(written_path, output_path)
+        self.assertTrue(output_path.exists())
+        self.assertIn("Engineering Team Review Report", output_path.read_text(encoding="utf-8"))
+
 
 if __name__ == "__main__":
     unittest.main()
